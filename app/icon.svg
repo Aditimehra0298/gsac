@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <rect width="80" height="80" rx="16" fill="#0e1c2b"/>
+  <circle cx="40" cy="40" r="28" stroke="#e4cb93" stroke-width="1.6"/>
+  <circle cx="40" cy="40" r="22" stroke="#e4cb93" stroke-width="0.6"/>
+  <path d="M40 18.5l1.2 2.7 2.9.25-2.2 1.9.67 2.8L40 24.8l-2.57 1.35.67-2.8-2.2-1.9 2.9-.25z" fill="#e4cb93"/>
+  <text x="40" y="47" text-anchor="middle" fill="#f3efe6" font-family="Palatino, serif" font-size="13" font-weight="700">GSAC</text>
+</svg>
