@@ -1,54 +1,97 @@
 "use client";
 
 import Link from "next/link";
-import { domains } from "@/lib/content";
 import { useLanguage } from "./LanguageProvider";
+
+type FooterLink = {
+  href: string;
+  label: string;
+  external?: boolean;
+};
+
+function FooterNavLink({ link }: { link: FooterLink }) {
+  if (link.external) {
+    return (
+      <a href={link.href} target="_blank" rel="noopener noreferrer">
+        {link.label}
+      </a>
+    );
+  }
+  return <Link href={link.href}>{link.label}</Link>;
+}
 
 export function Footer() {
   const { t } = useLanguage();
+  const year = new Date().getFullYear();
 
   return (
     <footer className="site-footer">
-      <div className="wrap footer-grid">
-        <div>
-          <p className="wordmark">GSAC</p>
-          <p>{t.footer.statement}</p>
+      <div className="footer-glow" aria-hidden="true" />
+
+      <div className="wrap footer-inner">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <img
+              className="footer-logo"
+              src="/brand/gsac-logo-footer.png?v=3"
+              alt="GSAC"
+              width={380}
+              height={156}
+              decoding="async"
+            />
+            <p className="footer-org">{t.footer.orgName}</p>
+            <h2 className="footer-headline">{t.footer.headline}</h2>
+            <p className="footer-statement">{t.footer.statement}</p>
+            <div className="footer-cta">
+              <Link href="/for-institutes" className="footer-cta-primary">
+                {t.footer.accessLinks[0].label}
+              </Link>
+              <Link href="/verify" className="footer-cta-ghost">
+                {t.footer.quickLinks.find((l) => l.href === "/verify")?.label ?? "Verify"}
+              </Link>
+            </div>
+          </div>
+
+          <nav className="footer-col" aria-label={t.footer.quickLinksTitle}>
+            <h3>{t.footer.quickLinksTitle}</h3>
+            <ul>
+              {t.footer.quickLinks.map((link) => (
+                <li key={`${link.href}-${link.label}`}>
+                  <FooterNavLink link={link} />
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav className="footer-col" aria-label={t.footer.accessTitle}>
+            <h3>{t.footer.accessTitle}</h3>
+            <ul>
+              {t.footer.accessLinks.map((link) => (
+                <li key={`${link.href}-${link.label}`}>
+                  <FooterNavLink link={link} />
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <nav className="footer-col" aria-label={t.footer.policiesTitle}>
+            <h3>{t.footer.policiesTitle}</h3>
+            <ul>
+              {t.footer.policyLinks.map((link) => (
+                <li key={`${link.href}-${link.label}`}>
+                  <FooterNavLink link={link} />
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
-        <div>
-          <h2>{t.footer.council}</h2>
-          <ul>
-            <li><Link href="/about">{t.footer.about}</Link></li>
-            <li><Link href="/framework">{t.footer.framework}</Link></li>
-            <li><Link href="/recognition">{t.footer.recognition}</Link></li>
-            <li><Link href="/help">{t.footer.help}</Link></li>
-            <li><Link href="/contact">{t.footer.secretariat}</Link></li>
-          </ul>
+
+        <div className="footer-base">
+          <p>
+            © {year} GSAC. {t.footer.rights}
+          </p>
+          <p className="footer-base-note">{t.footer.orgName}</p>
         </div>
-        <div>
-          <h2>{t.footer.assessments}</h2>
-          <ul>
-            {domains.slice(0, 4).map((domain) => (
-              <li key={domain.code}>
-                <Link href={`/assessments#${domain.code}`}>{domain.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2>{t.footer.moreDomains}</h2>
-          <ul>
-            {domains.slice(4).map((domain) => (
-              <li key={domain.code}>
-                <Link href={`/assessments#${domain.code}`}>{domain.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <p className="footer-word" aria-hidden="true">GSAC</p>
-      <div className="wrap footer-base">
-        <p>© {new Date().getFullYear()} {t.brand.full}</p>
-        <p>{t.footer.tagline}</p>
       </div>
     </footer>
   );

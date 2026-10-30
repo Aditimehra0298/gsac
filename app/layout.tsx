@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Anton, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Montserrat, Open_Sans, Playfair_Display } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LanguageProvider } from "@/components/LanguageProvider";
@@ -8,24 +8,24 @@ import { MotionRoot } from "@/components/MotionRoot";
 import { council } from "@/lib/content";
 import "./globals.css";
 
-const serif = Instrument_Serif({
+const serif = Playfair_Display({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
+  weight: ["500", "600", "700"],
   variable: "--font-serif",
   display: "swap",
 });
 
-const display = Anton({
+const sans = Open_Sans({
   subsets: ["latin"],
-  weight: "400",
-  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
   display: "swap",
 });
 
-const sans = Instrument_Sans({
+const ui = Montserrat({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["500", "600", "700"],
+  variable: "--font-ui",
   display: "swap",
 });
 
@@ -38,12 +38,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#0c0c0c",
+  themeColor: "#f6f3eb",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable} ${display.variable}`}>
+    <html lang="en" className={`${serif.variable} ${sans.variable} ${ui.variable}`}>
       <body>
         <LanguageProvider>
           <a className="skip" href="#content">

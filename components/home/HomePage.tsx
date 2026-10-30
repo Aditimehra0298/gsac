@@ -1,13 +1,14 @@
 "use client";
 
+import { AboutGsac } from "@/components/home/AboutGsac";
 import { AppFlowSection } from "@/components/home/AppFlowSection";
 import { AudienceSplit } from "@/components/home/AudienceSplit";
 import { CompanyLeadForm } from "@/components/home/CompanyLeadForm";
-import { EvidenceStudio } from "@/components/home/EvidenceStudio";
 import { FaqList } from "@/components/home/FaqList";
 import { GlobeCta } from "@/components/home/GlobeCta";
+import { GsacJourney } from "@/components/home/GsacJourney";
 import { HeroStage } from "@/components/home/HeroStage";
-import { PainPointCalendar } from "@/components/home/PainPointCalendar";
+import { PlatformExplorer } from "@/components/home/PlatformExplorer";
 import { ReviewField } from "@/components/home/ReviewField";
 import { SkillsGallery } from "@/components/home/SkillsGallery";
 import { StoryPhone } from "@/components/home/StoryPhone";
@@ -19,7 +20,9 @@ export function HomePage() {
   return (
     <>
       <HeroStage />
-      <EvidenceStudio />
+      <AboutGsac />
+      <PlatformExplorer />
+      <GsacJourney />
       <SkillsGallery />
 
       <section className="story story-with-phone" data-reveal>
@@ -45,10 +48,6 @@ export function HomePage() {
       <AppFlowSection />
 
       <AudienceSplit />
-
-      <div id="challenges">
-        <PainPointCalendar />
-      </div>
 
       <section className="opportunity" data-reveal>
         <img src="/sections/crew.jpg" alt="" />

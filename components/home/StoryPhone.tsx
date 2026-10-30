@@ -17,18 +17,24 @@ type Frame = {
  * Replace images in /public/sections/phone-frames
  */
 const frames: Frame[] = [
-  { src: "/sections/phone-frames/06-custom.png", alt: "SFT app" },
-  { src: "/sections/phone-frames/01-login.png", alt: "Institute login" },
-  { src: "/sections/phone-frames/03b-login-demo.jpg", alt: "Demo login" },
-  { src: "/sections/phone-frames/04b-home.png", alt: "Home" },
-  { src: "/sections/phone-frames/05b-course.png", alt: "Course" },
-  { src: "/sections/phone-frames/06b-student.png", alt: "Student" },
-  { src: "/sections/phone-frames/07b-training.png", alt: "Training details" },
-  { src: "/sections/phone-frames/08b-pathway.png", alt: "Weekly pathway" },
-  { src: "/sections/phone-frames/09b-profile.jpg", alt: "Institute profile" },
-  { src: "/sections/phone-frames/10b-videos.png", alt: "Upload videos" },
+  { src: "/sections/phone-frames/06-custom.png?v=5", alt: "SFT app" },
+  { src: "/sections/phone-frames/01-login.png?v=2", alt: "Institute login" },
+  { src: "/sections/phone-frames/03b-login-demo.jpg?v=2", alt: "Demo login" },
+  { src: "/sections/phone-frames/04b-home.png?v=2", alt: "Home" },
+  { src: "/sections/phone-frames/05b-course.png?v=2", alt: "Course" },
+  { src: "/sections/phone-frames/05c-course-active.png", alt: "Course · Active" },
+  { src: "/sections/phone-frames/05d-course-not-active.png", alt: "Course · Not active" },
+  { src: "/sections/phone-frames/05e-course-draft.png", alt: "Course · Draft" },
+  { src: "/sections/phone-frames/05f-approved.png", alt: "Approved" },
+  { src: "/sections/phone-frames/06b-student.png?v=2", alt: "Student" },
+  { src: "/sections/phone-frames/07b-training.png?v=2", alt: "Training details" },
+  { src: "/sections/phone-frames/08b-pathway.png?v=2", alt: "Weekly pathway" },
+  { src: "/sections/phone-frames/08c-certificate.png", alt: "Certificate" },
+  { src: "/sections/phone-frames/08d-students-list.png", alt: "Students" },
+  { src: "/sections/phone-frames/09b-profile.jpg?v=2", alt: "Institute profile" },
+  { src: "/sections/phone-frames/10b-videos.png?v=3", alt: "Upload videos" },
   {
-    src: "/sections/phone-frames/11b-companies.jpg",
+    src: "/sections/phone-frames/11b-companies.jpg?v=3",
     alt: "Company management",
     device: "laptop",
   },
@@ -52,8 +58,8 @@ export function StoryPhone() {
   const startActive = useRef(0);
   const moved = useRef(false);
 
-  const phoneW = railW > 0 ? Math.max(200, Math.floor((railW - GAP * 2) / 3)) : 280;
-  const laptopW = railW > 0 ? Math.max(phoneW, Math.floor(railW - 8)) : 560;
+  const phoneW = railW > 0 ? Math.max(240, Math.floor((railW - GAP * 2) / 2.55)) : 300;
+  const laptopW = railW > 0 ? Math.max(680, Math.floor(railW + 40)) : 760;
 
   function sizeOf(frame: Frame) {
     return deviceOf(frame) === "laptop" ? laptopW : phoneW;

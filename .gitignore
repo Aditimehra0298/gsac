@@ -5,3 +5,5 @@ out
 *.tsbuildinfo
 
 lms-temp
+
+platform-live-config.json

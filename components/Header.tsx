@@ -17,8 +17,9 @@ export function Header() {
     { href: "/", label: t.nav.home },
     { href: "/about", label: t.nav.about },
     { href: "/framework", label: t.nav.howItWorks },
-    { href: "/recognition", label: t.nav.forEmployers },
-    { href: "/assessments", label: t.nav.resources },
+    { href: "/for-institutes", label: t.nav.forEmployers },
+    { href: "/verify", label: t.nav.resources },
+    { href: "/contact", label: t.nav.contact },
   ];
 
   useEffect(() => {
@@ -46,12 +47,8 @@ export function Header() {
   return (
     <header className={`site-header${scrolled || mobileOpen ? " is-solid" : ""}`}>
       <div className="wrap header-inner">
-        <Link href="/" className="brand-lockup">
-          <Globe />
-          <span>
-            <strong>{t.brand.short}</strong>
-            <small>{t.brand.full}</small>
-          </span>
+        <Link href="/" className="brand-lockup" aria-label={t.brand.short}>
+          <img className="brand-logo" src="/brand/gsac-logo.png" alt={t.brand.short} />
         </Link>
         <nav className="desk-nav" aria-label="Primary">
           {links.map((link) => (
@@ -81,7 +78,16 @@ export function Header() {
               NL
             </button>
           </div>
-          <Link href="/assessments" className="button button-line verify">
+          <button type="button" className="header-search" aria-label="Search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" stroke="currentColor" strokeWidth="1.7" />
+              <path d="m16.2 16.2 4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+            </svg>
+          </button>
+          <Link href="https://assessment.sftlms.com/" className="button button-line verify" target="_blank" rel="noopener noreferrer">
+            {t.nav.login}
+          </Link>
+          <Link href="/for-institutes" className="button">
             {t.nav.getVerified} <Arrow />
           </Link>
           <button
@@ -121,7 +127,10 @@ export function Header() {
                 Nederlands
               </button>
             </div>
-            <Link href="/assessments" className="button button-ink">
+            <Link href="https://assessment.sftlms.com/" className="button button-line" target="_blank" rel="noopener noreferrer">
+              {t.nav.login}
+            </Link>
+            <Link href="/for-institutes" className="button button-ink">
               {t.nav.getVerified} <Arrow />
             </Link>
           </nav>
@@ -131,12 +140,3 @@ export function Header() {
   );
 }
 
-function Globe() {
-  return (
-    <svg className="globe" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
-      <circle cx="18" cy="18" r="16" fill="none" stroke="currentColor" strokeWidth="1.4" />
-      <ellipse cx="18" cy="18" rx="7" ry="16" fill="none" stroke="currentColor" strokeWidth="1.1" />
-      <path d="M2 18h32M18 2c4.2 3.6 6.4 9 6.4 16S22.2 30.4 18 34C13.8 30.4 11.6 25 11.6 18S13.8 5.6 18 2z" fill="none" stroke="currentColor" strokeWidth="1.1" />
-    </svg>
-  );
-}

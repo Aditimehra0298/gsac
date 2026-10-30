@@ -31,7 +31,7 @@ const dots: Dot[] = [
 ];
 
 export function GlobeCta() {
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointer = useRef({ x: 0, y: 0 });
 
@@ -64,10 +64,17 @@ export function GlobeCta() {
       const radius = Math.min(width, height) * 0.42 * breathe;
       context.clearRect(0, 0, width, height);
 
-      const glow = context.createRadialGradient(width / 2, height / 2, radius * 0.05, width / 2, height / 2, radius * 1.15);
-      glow.addColorStop(0, "rgba(255,229,0,0.18)");
-      glow.addColorStop(0.42, "rgba(255,229,0,0.06)");
-      glow.addColorStop(1, "rgba(255,229,0,0)");
+      const glow = context.createRadialGradient(
+        width / 2,
+        height / 2,
+        radius * 0.05,
+        width / 2,
+        height / 2,
+        radius * 1.15,
+      );
+      glow.addColorStop(0, "rgba(201,146,46,0.22)");
+      glow.addColorStop(0.42, "rgba(201,146,46,0.08)");
+      glow.addColorStop(1, "rgba(201,146,46,0)");
       context.fillStyle = glow;
       context.fillRect(0, 0, width, height);
 
@@ -91,7 +98,7 @@ export function GlobeCta() {
       }
       painted.sort((a, b) => a.z - b.z);
       for (const dot of painted) {
-        context.fillStyle = `rgba(255,229,0,${dot.alpha})`;
+        context.fillStyle = `rgba(201,146,46,${dot.alpha})`;
         context.beginPath();
         context.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2);
         context.fill();
@@ -120,15 +127,29 @@ export function GlobeCta() {
         pointer.current = { x: 0, y: 0 };
       }}
     >
-      <canvas ref={canvasRef} aria-hidden="true" />
-      <div className="globe-copy">
-        <h2>{t.globe.title}</h2>
-        <p>
-          {locale === "nl"
-            ? "Een record van echte skill, overal te controleren."
-            : "A record of real skill, ready to be checked anywhere."}
-        </p>
-        <Link href="/assessments">{t.globe.cta}</Link>
+      <div className="wrap globe-cta-split">
+        <div className="globe-copy">
+          <p className="globe-eyebrow">{t.globe.eyebrow}</p>
+          <h2>{t.globe.title}</h2>
+          <p className="globe-lead">{t.globe.lead}</p>
+          <p className="globe-body">{t.globe.body}</p>
+          <p className="globe-invite">{t.globe.invite}</p>
+          <div className="globe-actions">
+            <Link href="/for-institutes" className="globe-btn-primary">
+              {t.globe.primaryCta}
+            </Link>
+            <Link href="/contact" className="globe-btn-secondary">
+              {t.globe.secondaryCta}
+            </Link>
+          </div>
+          <Link href="/framework" className="globe-explore">
+            {t.globe.exploreCta}
+          </Link>
+        </div>
+
+        <div className="globe-stage">
+          <canvas ref={canvasRef} aria-hidden="true" />
+        </div>
       </div>
     </section>
   );

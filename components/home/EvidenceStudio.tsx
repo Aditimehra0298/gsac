@@ -185,9 +185,9 @@ const panels = {
 function Mark() {
   return (
     <svg className="gsac-mark" width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
-      <rect width="22" height="22" rx="5" fill="#ffe500" />
-      <circle cx="11" cy="11" r="6.2" fill="none" stroke="#111" strokeWidth="1.3" />
-      <path d="M11 4.8c1.6 1.4 2.5 3.5 2.5 6.2s-.9 4.8-2.5 6.2c-1.6-1.4-2.5-3.5-2.5-6.2s.9-4.8 2.5-6.2zM4.8 11h12.4" fill="none" stroke="#111" strokeWidth="1.1" />
+      <rect width="22" height="22" rx="5" fill="#c9922e" />
+      <circle cx="11" cy="11" r="6.2" fill="none" stroke="#002448" strokeWidth="1.3" />
+      <path d="M11 4.8c1.6 1.4 2.5 3.5 2.5 6.2s-.9 4.8-2.5 6.2c-1.6-1.4-2.5-3.5-2.5-6.2s.9-4.8 2.5-6.2zM4.8 11h12.4" fill="none" stroke="#002448" strokeWidth="1.1" />
     </svg>
   );
 }
